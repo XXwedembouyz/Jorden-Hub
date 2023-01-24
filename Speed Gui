@@ -2,7 +2,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
 getgenv().Theme = "Synapse"
 local Window = Library.CreateLib("Jorden Hub", getgenv().Theme)
 local Tab = Window:NewTab("Local Player")
-local Section = Tab:NewSection("Speed")
+local Section = Tab:NewSection("Speed Script")
 Section:NewTextBox("Character Speed", "Type A Number In And Make The Speed You Want", function(txt)
 	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = txt
 end)
