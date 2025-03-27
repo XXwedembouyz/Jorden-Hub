@@ -1,32 +1,8 @@
-local InfiniteJumpEnabled = false -- Start with Infinite Jump disabled
+-- Infinite Jump functionality
+local InfiniteJumpEnabled = false
 
--- Function to enable Infinite Jump
-local function EnableInfiniteJump()
-    InfiniteJumpEnabled = true
-end
-
--- Function to disable Infinite Jump
-local function DisableInfiniteJump()
-    InfiniteJumpEnabled = false
-end
-
--- Toggle button in Rayfield
-local Toggle = Tab:CreateToggle({
-    Name = "Infinite Jump",
-    CurrentValue = false,
-    Flag = "InfiniteJumpToggle", -- Flag for configuration saving
-    Callback = function(Value)
-        if Value then
-            EnableInfiniteJump()
-        else
-            DisableInfiniteJump()
-        end
-    end,
-})
-
--- Infinite Jump behavior when enabled
-game:GetService("UserInputService").JumpRequest:Connect(function()
+game:GetService("UserInputService").JumpRequest:connect(function()
     if InfiniteJumpEnabled then
-        game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
+        game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
     end
 end)
