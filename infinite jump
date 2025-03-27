@@ -1,0 +1,79 @@
+-- Main script (with Rayfield)
+getgenv().SecureMode = true
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Window = Rayfield:CreateWindow({
+    Name = "Jorden Hub | xx_wedemboyz",
+    Icon = 0,
+    LoadingTitle = "Jorden Hub",
+    LoadingSubtitle = "by xx_wedemboyz",
+    Theme = "AmberGlow",
+    DisableRayfieldPrompts = false,
+    DisableBuildWarnings = false,
+    ConfigurationSaving = {
+       Enabled = true,
+       FolderName = "JordenHub",
+       FileName = "JordenHub"
+    },
+    Discord = {
+       Enabled = true,
+       Invite = "JU28AtQ7DW",
+       RememberJoins = true
+    },
+    KeySystem = true,
+    KeySettings = {
+       Title = "Jorden Hub",
+       Subtitle = "Key System",
+       Note = "No method of obtaining the key is provided",
+       FileName = "JordenHubKey",
+       SaveKey = true,
+       GrabKeyFromSite = false,
+       Key = {"Hello"}
+    }
+})
+
+Rayfield:Notify({ 
+    Title = "Jorden Hub",
+    Content = "discord.gg/JU28AtQ7DW",
+    Duration = 6.5,
+    Image = 4483362458,
+})
+
+-- Create tabs, buttons, and other UI elements as needed
+local Tab = Window:CreateTab("Universal Scripts", 4483362458)
+local Section = Tab:CreateSection("Universal Scripts", false)
+
+-- Infinite Jump Toggle Integration
+local InfiniteJumpEnabled = false -- Start with Infinite Jump disabled
+
+-- Function to enable Infinite Jump
+local function EnableInfiniteJump()
+    InfiniteJumpEnabled = true
+end
+
+-- Function to disable Infinite Jump
+local function DisableInfiniteJump()
+    InfiniteJumpEnabled = false
+end
+
+-- Toggle button for Infinite Jump
+local Toggle = Tab:CreateToggle({
+    Name = "Infinite Jump",
+    CurrentValue = false,
+    Flag = "InfiniteJumpToggle",
+    Callback = function(Value)
+        if Value then
+            EnableInfiniteJump()
+        else
+            DisableInfiniteJump()
+        end
+    end,
+})
+
+-- Infinite Jump behavior when enabled
+game:GetService("UserInputService").JumpRequest:Connect(function()
+    if InfiniteJumpEnabled then
+        game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
+    end
+end)
+
+-- Add any other script elements here (e.g., Teleport, Noclip, etc.)
