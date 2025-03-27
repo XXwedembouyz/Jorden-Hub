@@ -26,7 +26,7 @@ UIS.InputBegan:Connect(function(input, gameProcessed)
     if gameProcessed then return end  -- Ignore if the input is already processed by the game (e.g., for GUI input)
 
     -- Check if teleportation is enabled, Control key is held down, and MouseButton1 (Left Click) is clicked
-    if teleportEnabled and input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
+    if teleportEnabled and input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftAlt) then
         Teleport(game.Players.LocalPlayer:GetMouse().Hit.p)  -- Perform teleport if enabled
     end
 end)
