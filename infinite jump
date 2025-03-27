@@ -1,8 +1,8 @@
 -- Infinite Jump functionality
-local InfiniteJumpEnabled = false
+local InfiniteJumpEnabled = true  -- Initially enabled since the toggle is activating it
 
 game:GetService("UserInputService").JumpRequest:connect(function()
     if InfiniteJumpEnabled then
-        game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+        game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):ChangeState("Jumping")
     end
 end)
