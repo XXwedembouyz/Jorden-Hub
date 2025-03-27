@@ -1,5 +1,5 @@
 # Jorden-Hub
-Msg XX_wedemboyz#6266 On Discord For Beta Key
-
+Msg xx_wedemboyz On Discord
+gidcord.gg/9mZynDjeeA
 --Tower Merge Simulator--
 Next Game I Script Hopefully
