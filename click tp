@@ -1,22 +1,35 @@
+-- teleportScript.lua
 local UIS = game:GetService("UserInputService")
 
-local Player = game.Players.LocalPlayer
-local Mouse = Player:GetMouse()
+local teleportEnabled = false  -- Start with teleportation disabled
 
-
+-- Get Character function
 function GetCharacter()
-   return game.Players.LocalPlayer.Character
+    return game.Players.LocalPlayer.Character
 end
 
+-- Teleport function
 function Teleport(pos)
-   local Char = GetCharacter()
-   if Char then
-       Char:MoveTo(pos)
-   end
+    local Char = GetCharacter()
+    if Char then
+        Char:MoveTo(pos)
+    end
 end
 
-UIS.InputBegan:Connect(function(input)
-   if input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
-       Teleport(Mouse.Hit.p)
-   end
+-- Function to toggle teleportation
+local function ToggleTeleport(Value)
+    teleportEnabled = Value  -- Set teleportEnabled based on the toggle value
+end
+
+-- Input listener for Control + MouseButton1 (Left Click)
+UIS.InputBegan:Connect(function(input, gameProcessed)
+    if gameProcessed then return end  -- Ignore if the input is already processed by the game (e.g., for GUI input)
+
+    -- Check if teleportation is enabled, Control key is held down, and MouseButton1 (Left Click) is clicked
+    if teleportEnabled and input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
+        Teleport(game.Players.LocalPlayer:GetMouse().Hit.p)  -- Perform teleport if enabled
+    end
 end)
+
+-- Return the ToggleTeleport function so it can be used from the main script
+return ToggleTeleport
