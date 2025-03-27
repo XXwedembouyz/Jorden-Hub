@@ -1,4 +1,4 @@
--- noclipScript.lua
+-- Noclip Script (noclipScript.lua)
 local Noclip = nil
 local Clip = nil
 
