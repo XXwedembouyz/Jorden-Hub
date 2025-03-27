@@ -1,16 +1,15 @@
+-- Rejoin Script (rejoin_script.lua)
 local Players = game:GetService("Players")
 local TeleportService = game:GetService("TeleportService")
 local PlaceId = game.PlaceId
 local JobId = game.JobId
 
--- Check if the player is the only one in the game
+-- Perform rejoin logic
 if #Players:GetPlayers() <= 1 then
     local player = Players.LocalPlayer
     player:Kick("\nRejoining...")
     wait(1) -- Wait for the player to be kicked
-    -- Teleport player to the same game instance
     TeleportService:Teleport(PlaceId, player)
 else
-    -- If there are other players, teleport to the same instance
     TeleportService:TeleportToPlaceInstance(PlaceId, JobId, Players.LocalPlayer)
 end
